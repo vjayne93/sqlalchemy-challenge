@@ -1,4 +1,5 @@
 # Import the dependencies.
+import os
 from flask import Flask, jsonify
 from sqlalchemy import create_engine, func
 from sqlalchemy.ext.automap import automap_base
@@ -8,7 +9,9 @@ import datetime as dt
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+
+database_path = os.path.join('..', 'Resources', 'hawaii.sqlite')
+engine = create_engine(f"sqlite:///{database_path}")
 Base = automap_base()
 
 # reflect the tables
